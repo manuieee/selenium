@@ -1,0 +1,129 @@
+using System;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
+
+namespace SeleniumTests
+{
+    [TestFixture]
+    public class SoastastoreTest
+    {
+        private IWebDriver driver;
+        private StringBuilder verificationErrors;
+        private string baseURL;
+        private bool acceptNextAlert = true;
+        
+        [SetUp]
+        public void SetupTest()
+        {
+            driver = new FirefoxDriver();
+            baseURL = "https://www.katalon.com/";
+            verificationErrors = new StringBuilder();
+        }
+        
+        [TearDown]
+        public void TeardownTest()
+        {
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+                // Ignore errors if unable to close the browser
+            }
+            Assert.AreEqual("", verificationErrors.ToString());
+        }
+        
+        [Test]
+        public void TheSoastastoreTest()
+        {
+            driver.Navigate().GoToUrl("http://www.soastastore.com/");
+            driver.FindElement(By.LinkText("Store")).Click();
+            driver.FindElement(By.Id("product_111_submit_button")).Click();
+            driver.FindElement(By.Id("product_112_submit_button")).Click();
+            driver.FindElement(By.Id("product_116_submit_button")).Click();
+            driver.FindElement(By.Id("product_117_submit_button")).Click();
+            driver.FindElement(By.Id("product_118_submit_button")).Click();
+            driver.FindElement(By.Id("product_119_submit_button")).Click();
+            driver.FindElement(By.Id("product_155_submit_button")).Click();
+            driver.FindElement(By.XPath("(//select[@name='product_rating'])[7]")).Click();
+            new SelectElement(driver.FindElement(By.XPath("(//select[@name='product_rating'])[7]"))).SelectByText("4");
+            driver.FindElement(By.XPath("(//option[@value='4'])[7]")).Click();
+            driver.FindElement(By.Id("product_156_submit_button")).Click();
+            driver.FindElement(By.Id("product_157_submit_button")).Click();
+            driver.FindElement(By.Id("product_158_submit_button")).Click();
+            driver.FindElement(By.Id("product_159_submit_button")).Click();
+            driver.FindElement(By.Id("product_160_submit_button")).Click();
+            driver.FindElement(By.Id("product_161_submit_button")).Click();
+            driver.FindElement(By.Id("product_162_submit_button")).Click();
+            driver.FindElement(By.Id("product_163_submit_button")).Click();
+            driver.FindElement(By.Id("product_164_submit_button")).Click();
+            driver.FindElement(By.Id("product_165_submit_button")).Click();
+            driver.FindElement(By.Id("product_166_submit_button")).Click();
+            driver.FindElement(By.XPath("(//a[contains(text(),'Checkout')])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            driver.FindElement(By.LinkText("Home")).Click();
+            driver.Close();
+        }
+        private bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+        
+        private bool IsAlertPresent()
+        {
+            try
+            {
+                driver.SwitchTo().Alert();
+                return true;
+            }
+            catch (NoAlertPresentException)
+            {
+                return false;
+            }
+        }
+        
+        private string CloseAlertAndGetItsText() {
+            try {
+                IAlert alert = driver.SwitchTo().Alert();
+                string alertText = alert.Text;
+                if (acceptNextAlert) {
+                    alert.Accept();
+                } else {
+                    alert.Dismiss();
+                }
+                return alertText;
+            } finally {
+                acceptNextAlert = true;
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+*** Settings ***
+Suite Setup    Open Browser    https://www.katalon.com/    firefox
+Suite Teardown    Close Browser
+Resource    seleniumLibrary.robot
+
+*** Variables ***
+${undefined}    https://www.katalon.com/
+
+*** Test Cases ***
+Test Case
+    open    http://www.soastastore.com/
+    click    link=Store
+    click    id=product_111_submit_button
+    click    id=product_112_submit_button
+    click    id=product_116_submit_button
+    click    id=product_117_submit_button
+    click    id=product_118_submit_button
+    click    id=product_119_submit_button
+    click    id=product_155_submit_button
+    click    xpath=(//select[@name='product_rating'])[7]
+    select    xpath=(//select[@name='product_rating'])[7]    4
+    click    xpath=(//option[@value='4'])[7]
+    click    id=product_156_submit_button
+    click    id=product_157_submit_button
+    click    id=product_158_submit_button
+    click    id=product_159_submit_button
+    click    id=product_160_submit_button
+    click    id=product_161_submit_button
+    click    id=product_162_submit_button
+    click    id=product_163_submit_button
+    click    id=product_164_submit_button
+    click    id=product_165_submit_button
+    click    id=product_166_submit_button
+    click    xpath=(//a[contains(text(),'Checkout')])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    xpath=(//input[@name='submit'])[2]
+    click    link=Home
+    close    win_ser_local
+    

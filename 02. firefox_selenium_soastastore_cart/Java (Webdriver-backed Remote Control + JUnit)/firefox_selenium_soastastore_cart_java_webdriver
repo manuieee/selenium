@@ -1,0 +1,74 @@
+package com.example.tests;
+
+import com.thoughtworks.selenium.Selenium;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
+import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.regex.Pattern;
+import static org.apache.commons.lang3.StringUtils.join;
+
+public class SoastastoreTest {
+	private Selenium selenium;
+
+	@Before
+	public void setUp() throws Exception {
+		WebDriver driver = new FirefoxDriver();
+		String baseUrl = "https://www.katalon.com/";
+		selenium = new WebDriverBackedSelenium(driver, baseUrl);
+	}
+
+	@Test
+	public void testSoastastore() throws Exception {
+		selenium.open("http://www.soastastore.com/");
+		selenium.click("link=Store");
+		selenium.click("id=product_111_submit_button");
+		selenium.click("id=product_112_submit_button");
+		selenium.click("id=product_116_submit_button");
+		selenium.click("id=product_117_submit_button");
+		selenium.click("id=product_118_submit_button");
+		selenium.click("id=product_119_submit_button");
+		selenium.click("id=product_155_submit_button");
+		selenium.click("xpath=(//select[@name='product_rating'])[7]");
+		selenium.select("xpath=(//select[@name='product_rating'])[7]", "label=4");
+		selenium.click("xpath=(//option[@value='4'])[7]");
+		selenium.click("id=product_156_submit_button");
+		selenium.click("id=product_157_submit_button");
+		selenium.click("id=product_158_submit_button");
+		selenium.click("id=product_159_submit_button");
+		selenium.click("id=product_160_submit_button");
+		selenium.click("id=product_161_submit_button");
+		selenium.click("id=product_162_submit_button");
+		selenium.click("id=product_163_submit_button");
+		selenium.click("id=product_164_submit_button");
+		selenium.click("id=product_165_submit_button");
+		selenium.click("id=product_166_submit_button");
+		selenium.click("xpath=(//a[contains(text(),'Checkout')])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("xpath=(//input[@name='submit'])[2]");
+		selenium.click("link=Home");
+		selenium.close();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		selenium.stop();
+	}
+}

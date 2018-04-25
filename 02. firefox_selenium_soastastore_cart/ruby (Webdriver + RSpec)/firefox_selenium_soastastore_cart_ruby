@@ -1,0 +1,98 @@
+require "json"
+require "selenium-webdriver"
+require "rspec"
+include RSpec::Expectations
+
+describe "SoastastoreTest" do
+
+  before(:each) do
+    @driver = Selenium::WebDriver.for :firefox
+    @base_url = "https://www.katalon.com/"
+    @accept_next_alert = true
+    @driver.manage.timeouts.implicit_wait = 30
+    @verification_errors = []
+  end
+  
+  after(:each) do
+    @driver.quit
+    @verification_errors.should == []
+  end
+  
+  it "test_soastastore" do
+    @driver.get "http://www.soastastore.com/"
+    @driver.find_element(:link, "Store").click
+    @driver.find_element(:id, "product_111_submit_button").click
+    @driver.find_element(:id, "product_112_submit_button").click
+    @driver.find_element(:id, "product_116_submit_button").click
+    @driver.find_element(:id, "product_117_submit_button").click
+    @driver.find_element(:id, "product_118_submit_button").click
+    @driver.find_element(:id, "product_119_submit_button").click
+    @driver.find_element(:id, "product_155_submit_button").click
+    @driver.find_element(:xpath, "(//select[@name='product_rating'])[7]").click
+    Selenium::WebDriver::Support::Select.new(@driver.find_element(:xpath, "(//select[@name='product_rating'])[7]")).select_by(:text, "4")
+    @driver.find_element(:xpath, "(//option[@value='4'])[7]").click
+    @driver.find_element(:id, "product_156_submit_button").click
+    @driver.find_element(:id, "product_157_submit_button").click
+    @driver.find_element(:id, "product_158_submit_button").click
+    @driver.find_element(:id, "product_159_submit_button").click
+    @driver.find_element(:id, "product_160_submit_button").click
+    @driver.find_element(:id, "product_161_submit_button").click
+    @driver.find_element(:id, "product_162_submit_button").click
+    @driver.find_element(:id, "product_163_submit_button").click
+    @driver.find_element(:id, "product_164_submit_button").click
+    @driver.find_element(:id, "product_165_submit_button").click
+    @driver.find_element(:id, "product_166_submit_button").click
+    @driver.find_element(:xpath, "(//a[contains(text(),'Checkout')])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:xpath, "(//input[@name='submit'])[2]").click
+    @driver.find_element(:link, "Home").click
+    @driver.close
+  end
+  
+  def element_present?(how, what)
+    ${receiver}.find_element(how, what)
+    true
+  rescue Selenium::WebDriver::Error::NoSuchElementError
+    false
+  end
+  
+  def alert_present?()
+    ${receiver}.switch_to.alert
+    true
+  rescue Selenium::WebDriver::Error::NoAlertPresentError
+    false
+  end
+  
+  def verify(&blk)
+    yield
+  rescue ExpectationNotMetError => ex
+    @verification_errors << ex
+  end
+  
+  def close_alert_and_get_its_text(how, what)
+    alert = ${receiver}.switch_to().alert()
+    alert_text = alert.text
+    if (@accept_next_alert) then
+      alert.accept()
+    else
+      alert.dismiss()
+    end
+    alert_text
+  ensure
+    @accept_next_alert = true
+  end
+end

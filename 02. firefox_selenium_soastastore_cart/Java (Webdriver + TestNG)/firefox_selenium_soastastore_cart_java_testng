@@ -1,0 +1,111 @@
+package com.example.tests;
+
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+import org.testng.annotations.*;
+import static org.testng.Assert.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class SoastastoreTest {
+  private WebDriver driver;
+  private String baseUrl;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
+
+  @BeforeClass(alwaysRun = true)
+  public void setUp() throws Exception {
+    driver = new FirefoxDriver();
+    baseUrl = "https://www.katalon.com/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+  }
+
+  @Test
+  public void testSoastastore() throws Exception {
+    driver.get("http://www.soastastore.com/");
+    driver.findElement(By.linkText("Store")).click();
+    driver.findElement(By.id("product_111_submit_button")).click();
+    driver.findElement(By.id("product_112_submit_button")).click();
+    driver.findElement(By.id("product_116_submit_button")).click();
+    driver.findElement(By.id("product_117_submit_button")).click();
+    driver.findElement(By.id("product_118_submit_button")).click();
+    driver.findElement(By.id("product_119_submit_button")).click();
+    driver.findElement(By.id("product_155_submit_button")).click();
+    driver.findElement(By.xpath("(//select[@name='product_rating'])[7]")).click();
+    new Select(driver.findElement(By.xpath("(//select[@name='product_rating'])[7]"))).selectByVisibleText("4");
+    driver.findElement(By.xpath("(//option[@value='4'])[7]")).click();
+    driver.findElement(By.id("product_156_submit_button")).click();
+    driver.findElement(By.id("product_157_submit_button")).click();
+    driver.findElement(By.id("product_158_submit_button")).click();
+    driver.findElement(By.id("product_159_submit_button")).click();
+    driver.findElement(By.id("product_160_submit_button")).click();
+    driver.findElement(By.id("product_161_submit_button")).click();
+    driver.findElement(By.id("product_162_submit_button")).click();
+    driver.findElement(By.id("product_163_submit_button")).click();
+    driver.findElement(By.id("product_164_submit_button")).click();
+    driver.findElement(By.id("product_165_submit_button")).click();
+    driver.findElement(By.id("product_166_submit_button")).click();
+    driver.findElement(By.xpath("(//a[contains(text(),'Checkout')])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.linkText("Home")).click();
+    driver.close();
+  }
+
+  @AfterClass(alwaysRun = true)
+  public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
+  }
+
+  private boolean isElementPresent(By by) {
+    try {
+      driver.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  }
+
+  private boolean isAlertPresent() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
+
+  private String closeAlertAndGetItsText() {
+    try {
+      Alert alert = driver.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+}
